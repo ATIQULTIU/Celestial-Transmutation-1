@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Celestial Transmutation — Four Worlds, One Alchemy</title>
+<meta name="description" content="An interactive WebGL experience: four conceptual planets transmuting through shader energy and volumetric particles.">
+<meta name="author" content="MD. Atiqul Islam (Atik)">
+<meta name="theme-color" content="#02030a">
+<meta property="og:title" content="Celestial Transmutation">
+<meta property="og:description" content="Four conceptual planets. One fluid transformation system. Designed &amp; Developed by MD. Atiqul Islam (Atik).">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%AA%90%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Celestial Transmutation","author":{"@type":"Person","name":"MD. Atiqul Islam (Atik)","email":"atik.cmttiu1001@gmail.com"}}</script>
+<link rel="stylesheet" href="css/scene.css">
+<link rel="stylesheet" href="css/ui.css">
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.183.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.183.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+<div id="canvas-container" aria-hidden="true"></div>
+
+<div id="brand">
+    <span id="brand-mark"></span>
+    <div id="brand-copy">
+        <span id="brand-title">Celestial Transmutation</span>
+        <span id="brand-subtitle">Realtime phase-surge synthesis</span>
+    </div>
+</div>
+
+<label id="auto-control" class="glass-panel" title="Automatically visit the next planet">
+    <span>Auto</span>
+    <input id="auto-cycle" type="checkbox" checked>
+    <span id="auto-indicator" aria-hidden="true"></span>
+</label>
+
+<section id="planet-copy" aria-live="polite">
+    <div id="planet-kicker">Oceanic dreamworld</div>
+    <h1 id="planet-name">Aethera</h1>
+    <p id="planet-description">
+        A luminous water planet whose equatorial currents fold into violet auroras and suspended atmospheric rivers.
+    </p>
+    <div id="transition-meter" aria-hidden="true">
+        <div id="transition-meter-fill"></div>
+    </div>
+</section>
+
+<nav id="planet-ui" class="glass-panel" aria-label="Conceptual planets">
+    <button type="button" class="is-active" data-planet="0" aria-pressed="true">Aethera</button>
+    <button type="button" data-planet="1" aria-pressed="false">Pyra</button>
+    <button type="button" data-planet="2" aria-pressed="false">Orison</button>
+    <button type="button" data-planet="3" aria-pressed="false">Vesper</button>
+</nav>
+
+<div id="loader" role="status" aria-live="polite">
+  <div class="loader-core">
+    <svg class="sigil" viewBox="0 0 100 100" aria-hidden="true"><circle class="r1" cx="50" cy="50" r="48"/><polygon class="r2" points="50,6 90,76 10,76"/><polygon class="r2" points="50,94 10,24 90,24"/><circle cx="50" cy="50" r="22"/><circle class="core" cx="50" cy="50" r="4"/></svg>
+    <div class="loader-title">Celestial Transmutation</div>
+    <div class="loader-note" id="loader-note">Gathering stardust…</div>
+  </div>
+</div>
+<canvas id="sparkles" aria-hidden="true"></canvas>
+<div id="toast" class="glass-panel" role="status" aria-live="polite"></div>
+<div id="tools">
+  <button type="button" id="btn-atlas" class="tool-btn glass-panel" aria-expanded="false" aria-label="Planet atlas (I)" title="Planet atlas (I)">☿</button>
+  <button type="button" id="btn-help" class="tool-btn glass-panel" aria-expanded="false" aria-label="Controls (H)" title="Controls (H)">?</button>
+  <button type="button" id="btn-full" class="tool-btn glass-panel" aria-label="Toggle fullscreen (F)" title="Fullscreen (F)">⛶</button>
+  <button type="button" id="btn-credits" class="tool-btn glass-panel" aria-expanded="false" aria-label="Credits (C)" title="Credits (C)">✦</button>
+</div>
+<div id="atlas" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="atlas-title">
+  <div class="modal-card glass-panel"><button type="button" class="modal-close" aria-label="Close">✕</button>
+    <div class="atlas-sigil" id="atlas-sigil" aria-hidden="true"></div>
+    <span class="eyebrow" id="atlas-kicker"></span><h2 id="atlas-title"></h2><p id="atlas-lore"></p>
+    <div class="stats" id="atlas-stats"></div><div class="tags" id="atlas-tags"></div></div>
+</div>
+<div id="help" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="help-title">
+  <div class="modal-card glass-panel"><button type="button" class="modal-close" aria-label="Close">✕</button>
+    <span class="eyebrow">Navigation</span><h2 id="help-title">Controls</h2>
+    <div class="keys"><kbd>← →</kbd><span>Previous / next planet</span><kbd>Space</kbd><span>Next planet</span><kbd>1–4</kbd><span>Jump to a planet</span><kbd>A</kbd><span>Toggle auto-cycle</span><kbd>I</kbd><span>Planet atlas</span><kbd>F</kbd><span>Fullscreen</span><kbd>C</kbd><span>Credits</span><kbd>Esc</kbd><span>Close panels</span></div>
+    <p class="small">Drag to orbit the planet, scroll or pinch to zoom.</p></div>
+</div>
+<div id="credits" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="credits-title">
+  <div class="modal-card glass-panel"><button type="button" class="modal-close" aria-label="Close">✕</button>
+    <span class="eyebrow">Project information</span><h2 id="credits-title">Celestial Transmutation</h2>
+    <p>Four conceptual planets and one fluid transformation system, driven by real-time shader energy and volumetric particles (Three.js, WebGL).</p>
+    <span class="eyebrow" style="margin-top:20px">Designed &amp; Developed by</span>
+    <div class="credit-name">MD. Atiqul Islam (Atik)</div>
+    <a class="credit-mail" href="mailto:atik.cmttiu1001@gmail.com">atik.cmttiu1001@gmail.com</a>
+    <p class="small">Original concept and shader scene by Techartist (<a href="https://codepen.io/VoXelo/pen/yygKOVy" target="_blank" rel="noopener">CodePen</a>), MIT License.</p></div>
+</div>
+<footer id="site-footer"><strong>Designed &amp; Developed by MD. Atiqul Islam (Atik)</strong><span>Email: <a href="mailto:atik.cmttiu1001@gmail.com">atik.cmttiu1001@gmail.com</a></span></footer>
+<script type="module" src="js/scene.js"></script>
+<script src="js/ui.js"></script>
+<noscript><p style="position:fixed;inset:auto 0 50% 0;text-align:center;color:#fff">JavaScript and WebGL are required.</p></noscript>
+</body>
+</html>

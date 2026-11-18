@@ -1,0 +1,37 @@
+<div id="loader" role="status" aria-live="polite">
+  <div class="loader-core">
+    <svg class="sigil" viewBox="0 0 100 100" aria-hidden="true"><circle class="r1" cx="50" cy="50" r="48"/><polygon class="r2" points="50,6 90,76 10,76"/><polygon class="r2" points="50,94 10,24 90,24"/><circle cx="50" cy="50" r="22"/><circle class="core" cx="50" cy="50" r="4"/></svg>
+    <div class="loader-title">Celestial Transmutation</div>
+    <div class="loader-note" id="loader-note">Gathering stardust…</div>
+  </div>
+</div>
+<canvas id="sparkles" aria-hidden="true"></canvas>
+<div id="toast" class="glass-panel" role="status" aria-live="polite"></div>
+<div id="tools">
+  <button type="button" id="btn-atlas" class="tool-btn glass-panel" aria-expanded="false" aria-label="Planet atlas (I)" title="Planet atlas (I)">☿</button>
+  <button type="button" id="btn-help" class="tool-btn glass-panel" aria-expanded="false" aria-label="Controls (H)" title="Controls (H)">?</button>
+  <button type="button" id="btn-full" class="tool-btn glass-panel" aria-label="Toggle fullscreen (F)" title="Fullscreen (F)">⛶</button>
+  <button type="button" id="btn-credits" class="tool-btn glass-panel" aria-expanded="false" aria-label="Credits (C)" title="Credits (C)">✦</button>
+</div>
+<div id="atlas" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="atlas-title">
+  <div class="modal-card glass-panel"><button type="button" class="modal-close" aria-label="Close">✕</button>
+    <div class="atlas-sigil" id="atlas-sigil" aria-hidden="true"></div>
+    <span class="eyebrow" id="atlas-kicker"></span><h2 id="atlas-title"></h2><p id="atlas-lore"></p>
+    <div class="stats" id="atlas-stats"></div><div class="tags" id="atlas-tags"></div></div>
+</div>
+<div id="help" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="help-title">
+  <div class="modal-card glass-panel"><button type="button" class="modal-close" aria-label="Close">✕</button>
+    <span class="eyebrow">Navigation</span><h2 id="help-title">Controls</h2>
+    <div class="keys"><kbd>← →</kbd><span>Previous / next planet</span><kbd>Space</kbd><span>Next planet</span><kbd>1–4</kbd><span>Jump to a planet</span><kbd>A</kbd><span>Toggle auto-cycle</span><kbd>I</kbd><span>Planet atlas</span><kbd>F</kbd><span>Fullscreen</span><kbd>C</kbd><span>Credits</span><kbd>Esc</kbd><span>Close panels</span></div>
+    <p class="small">Drag to orbit the planet, scroll or pinch to zoom.</p></div>
+</div>
+<div id="credits" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="credits-title">
+  <div class="modal-card glass-panel"><button type="button" class="modal-close" aria-label="Close">✕</button>
+    <span class="eyebrow">Project information</span><h2 id="credits-title">Celestial Transmutation</h2>
+    <p>Four conceptual planets and one fluid transformation system, driven by real-time shader energy and volumetric particles (Three.js, WebGL).</p>
+    <span class="eyebrow" style="margin-top:20px">Designed &amp; Developed by</span>
+    <div class="credit-name">MD. Atiqul Islam (Atik)</div>
+    <a class="credit-mail" href="mailto:atik.cmttiu1001@gmail.com">atik.cmttiu1001@gmail.com</a>
+    <p class="small">Original concept and shader scene by Techartist (<a href="https://codepen.io/VoXelo/pen/yygKOVy" target="_blank" rel="noopener">CodePen</a>), MIT License.</p></div>
+</div>
+<footer id="site-footer"><strong>Designed &amp; Developed by MD. Atiqul Islam (Atik)</strong><span>Email: <a href="mailto:atik.cmttiu1001@gmail.com">atik.cmttiu1001@gmail.com</a></span></footer>

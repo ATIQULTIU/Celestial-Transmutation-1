@@ -1,0 +1,34 @@
+<div id="canvas-container" aria-hidden="true"></div>
+
+<div id="brand">
+    <span id="brand-mark"></span>
+    <div id="brand-copy">
+        <span id="brand-title">Celestial Transmutation</span>
+        <span id="brand-subtitle">Realtime phase-surge synthesis</span>
+    </div>
+</div>
+
+<label id="auto-control" class="glass-panel" title="Automatically visit the next planet">
+    <span>Auto</span>
+    <input id="auto-cycle" type="checkbox" checked>
+    <span id="auto-indicator" aria-hidden="true"></span>
+</label>
+
+<section id="planet-copy" aria-live="polite">
+    <div id="planet-kicker">Oceanic dreamworld</div>
+    <h1 id="planet-name">Aethera</h1>
+    <p id="planet-description">
+        A luminous water planet whose equatorial currents fold into violet auroras and suspended atmospheric rivers.
+    </p>
+    <div id="transition-meter" aria-hidden="true">
+        <div id="transition-meter-fill"></div>
+    </div>
+</section>
+
+<nav id="planet-ui" class="glass-panel" aria-label="Conceptual planets">
+    <button type="button" class="is-active" data-planet="0" aria-pressed="true">Aethera</button>
+    <button type="button" data-planet="1" aria-pressed="false">Pyra</button>
+    <button type="button" data-planet="2" aria-pressed="false">Orison</button>
+    <button type="button" data-planet="3" aria-pressed="false">Vesper</button>
+</nav>
+
